@@ -1,0 +1,25 @@
+{
+  "name": "18_nosql_challenge",
+  "version": "1.0.0",
+  "description": "# Table of Contents",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TimK76/18_NoSQL_Challenge.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TimK76/18_NoSQL_Challenge/issues"
+  },
+  "homepage": "https://github.com/TimK76/18_NoSQL_Challenge#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "mongodb": "^4.6.0",
+    "mongoose": "^6.3.4"
+  }
+}
