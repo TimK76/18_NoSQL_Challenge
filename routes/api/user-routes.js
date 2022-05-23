@@ -1,6 +1,4 @@
 const router = require('express').Router();
-const { get } = require('mongoose');
-const { put } = require('.');
 const {
     getAllUser,
     getUserById,
