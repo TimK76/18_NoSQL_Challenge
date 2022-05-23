@@ -1,13 +1,13 @@
 const { Thought, User } = require('../models');
 
-const thoughtControllwer = {
-addThought({ params, body }, res) {
+const thoughtController = {
+addThought(req, res) {
     console.log(body);
-    Thought.create(body)
-      .then(({ _id }) => {
+    Thought.create(req.body)
+      .then((data) => {
         return User.findOneAndUpdate(
-          { _id: params.UserId },
-          { $push: { thoughts: _id } },
+          { _id: req.body.userID },
+          { $push: { thoughts: data._id } },
           { new: true }
         );
       })
@@ -27,3 +27,5 @@ addThought({ params, body }, res) {
 // addReaction,
 // removeReaction
 }
+
+module.exports= thoughtController;
