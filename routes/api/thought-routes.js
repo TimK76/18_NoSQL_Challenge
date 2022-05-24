@@ -11,14 +11,14 @@ const {
 
 // /api/thoughts
 router.route('/')
-// create a new thought (don't forget to push the created thoughs -id to the associated user's thoughts array field)
+// create a new thought (don't forget to push the created thought's -id to the associated user's thoughts array field)
 .post(addThought)
-// // get all thoughts
-// .get(getAllThought);
+// get all thoughts
+.get(getAllThought);
 
-// router.route('/:userId/:thoughId')
-// // get a single thought by its _id
-// .get(getThoughtById)
+router.route('/:userId/:thoughId')
+// get a single thought by its _id
+.get(getThoughtById)
 // // update a thought by its _id
 // .put(updateThought)
 // // remove a thought by its id

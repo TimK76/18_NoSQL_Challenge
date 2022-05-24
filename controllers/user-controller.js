@@ -1,6 +1,12 @@
 const { User } = require('../models');
 
 const userController = {
+createUser({ body }, res) {
+  console.log('createUser')
+    User.create(body)
+    .then(dbUserData => res.json(dbUserData))
+    .catch(err => res.json(err));
+},
 getAllUser(req, res) {
     User.find({})
     .populate({
@@ -16,25 +22,22 @@ getAllUser(req, res) {
     });
 },
 getUserById(req, res) {
-    User.findOne({ _id: params.id })
-    .populate({
-      path: 'thoughts',
-      select: '-__v'
-    })
-    .select('-__v')
+    User.findOne({ _id: req.params.id })
+     .select('-__v')
+     .populate(
+      'thoughts'
+    )
+    .populate(
+      'friends'
+    )
     .then(dbUserData => res.json(dbUserData))
     .catch(err => {
       console.log(err);
       res.sendStatus(400);
     });
 },
-createUser(req, res) {
-    User.create(body)
-    .then(dbUserData => res.json(dbUserData))
-    .catch(err => res.json(err));
-},
 updateUser(req, res) {
-    User.findOneAndUpdate({ _id: params.id }, body, { new: true, runValidators: true })
+    User.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true, runValidators: true })
     .then(dbUserData => {
       if (!dbUserData) {
         res.status(404).json({ message: 'No User found with this id!' });
@@ -45,14 +48,14 @@ updateUser(req, res) {
     .catch(err => res.status(400).json(err));
 },
 deleteUser(req, res) {
-    User.findOneAndDelete({ _id: params.id })
+    User.findOneAndDelete({ _id: req.params.id })
     .then(dbUserData => res.json(dbUserData))
     .catch(err => res.json(err));
 },
 addFriend({ params, body }, res) {
     User.findOneAndUpdate(
       { _id: params.userId },
-      { $push: {friends: body }},
+      { $push: {friends: params.friendId}},
       {new: true, runValidators: true}
     )
     .then(dbUserData => {
@@ -68,12 +71,12 @@ addFriend({ params, body }, res) {
 deleteFriend({ params }, res) {
     User.findOneAndUpdate(
       { _id: params.userId },
-      { $pull: {replies: {friendId: params.friendId}}},
-      { new: true},
+      { $pull: {friends: params.friendId}},
+      { new: true}
     )
     .then(dbUserData => res.json(dbUserData))
     .catch(err => res.json(err));
-  }
+}
 };
 
 module.exports=userController;
