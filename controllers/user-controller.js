@@ -4,6 +4,7 @@ const userController = {
 createUser({ body }, res) {
   console.log('createUser')
     User.create(body)
+    // .select: "-__v",
     .then(dbUserData => res.json(dbUserData))
     .catch(err => res.json(err));
 },
