@@ -8,7 +8,7 @@
 
   ## Description
 
-  This was a class project with the objective of building an API for an eventual Socal Media Network. I was given the following User Story and Acceptance Criteria and instructions to use MongoDB, Mongoose, Expresss.js and any JavaScript date library of my choice or the native JavaScript DATE object for formatting timestamps. The application will not be delployed but will include a [Walkthrough Video]() demonstrating functionality of routes working in Insomnia. 
+  This was a class project with the objective of building an API for an eventual Socal Media Network. I was given the following User Story and Acceptance Criteria and instructions to use MongoDB, Mongoose, Expresss.js and any JavaScript date library of my choice or the native JavaScript DATE object for formatting timestamps. The application will not be delployed but will include a [Walkthrough Video](https://drive.google.com/file/d/1ROtXOB7Fo7oRb3yd7IXqQLPYBoY8L4zw/view) demonstrating functionality of routes working in Insomnia. 
 
 ### User Story
 
