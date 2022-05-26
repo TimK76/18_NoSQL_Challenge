@@ -24,7 +24,9 @@ router.route('/:thoughtId')
 // api/thoughts/:thoughtId/reactions
 router.route('/:thoughtId/reactions')
 // create a reaction stored in a single thought's reactions array field
-.post(addReaction)
+.post(addReaction);
+
+router.route('/:thoughtId/reactions/:reactionId')
 .delete(removeReaction);
  
 module.exports=router;
