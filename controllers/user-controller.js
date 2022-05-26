@@ -61,7 +61,7 @@ addFriend({ params, body }, res) {
     )
     .then(dbUserData => {
       if (!dbUserData) {
-        res.status(404).json({ message: "No user found with this id!"});
+        res.status(404).json({ message: "No user found with this id."});
         return;
       }
       res.json(dbUserData);
@@ -75,7 +75,13 @@ deleteFriend({ params }, res) {
       { $pull: {friends: params.friendId}},
       { new: true}
     )
-    .then(dbUserData => res.json(dbUserData))
+    .then(dbUserData => {
+      if (!dbUserData) {
+        res.status(404).json({ message: "No user found with this id." });
+        return;
+      }
+      res.json(dbUserData);
+    })
     .catch(err => res.json(err));
 }
 };
